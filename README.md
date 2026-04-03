@@ -1,26 +1,70 @@
-# WCI Interactive Website
+# WCI Interactive — World Cleanup Institute
 
-Interactive website for the World Cleanup Institute (WCI), featuring the **We Create Future (WCF)** programme and related pages.
+Interactive single-page website for the **World Cleanup Institute (WCI)** and the **We Create Future (WCF)** programme.
 
-## Contents
+## Live-URL (nach GitHub Pages Setup)
 
-- `index.html` — Single-file standalone website (all assets embedded as base64)
+`https://<dein-username>.github.io/wci-interactive`
 
-## Pages included
+oder mit eigener Domain:
 
-- **Home** — WCI overview
-- **We Create Future (WCF)** — Programme overview with:
-  - World Cleanup Kits
-  - Jersey Kit Team
-  - We Create Future Scholarship (BCBT / Berlin College of Business and Technology)
-  - Partners: WCF, WCD, Let's Do It!, WCI, EQA, SportHubs, Cofresco
-- **WCD Campaign** — World Cleanup Day campaign page
-- Further subpages
+`https://wecreatefuture.world`
 
-## Usage
+---
 
-Open `index.html` directly in any modern browser — no server or build step required.
+## Inhalt
 
-## Tech
+```
+wci-interactive/
+├── index.html      ← Komplette Website (alle Assets inline)
+├── CNAME           ← Custom Domain (anpassen!)
+├── start.sh        ← Lokaler Dev-Server (macOS / Linux)
+├── start.bat       ← Lokaler Dev-Server (Windows)
+└── README.md
+```
 
-Plain HTML/CSS/JS, no external dependencies. All images and logos are base64-encoded inline.
+## Seiten
+
+| Seite | Beschreibung |
+|-------|-------------|
+| Home | WCI Übersicht |
+| We Create Future | Programmseite mit Kits, Jersey, Scholarship, Partner |
+| WCD Campaign | World Cleanup Day Kampagnenseite |
+
+---
+
+## Lokal starten
+
+**macOS / Linux:**
+```bash
+bash start.sh
+```
+
+**Windows:**
+Doppelklick auf `start.bat`
+
+Öffnet automatisch `http://localhost:8080`
+
+---
+
+## GitHub Pages aktivieren
+
+1. Repo auf GitHub pushen
+2. **Settings → Pages → Source:** `main` / `/ (root)`
+3. Speichern → Site ist unter `<username>.github.io/wci-interactive` erreichbar
+
+## Custom Domain (Cloudflare)
+
+1. `CNAME`-Datei anpassen: eigene Domain eintragen
+2. In Cloudflare DNS: A-Records auf GitHub Pages IPs setzen
+3. In GitHub Pages: Custom Domain eintragen + HTTPS erzwingen
+
+Detaillierte Anleitung: siehe Projekt-Dokumentation.
+
+---
+
+## Tech Stack
+
+- Plain HTML / CSS / JS — keine Abhängigkeiten
+- Alle Bilder & Logos als Base64 eingebettet
+- Keine Build-Tools nötig
