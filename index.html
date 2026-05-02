@@ -3088,12 +3088,12 @@ function navigate(id) {
   if(nv) nv.classList.add('active');
   autoOpen(id);
   document.querySelector('.content').scrollTop=0;
-  // Close mobile sidebar on navigate
-  if(window.innerWidth<=900){
-    const sb=document.querySelector('.sidebar');
+  // Close sidebar only when hamburger was used (mobile-open class present)
+  const _sb=document.querySelector('.sidebar');
+  if(_sb && _sb.classList.contains('mobile-open')){
     const ov=document.getElementById('sb-overlay');
-    sb.classList.remove('mobile-open');
-    sb.classList.add('collapsed');
+    _sb.classList.remove('mobile-open');
+    _sb.classList.add('collapsed');
     if(ov) ov.classList.remove('active');
   }
 
@@ -3125,7 +3125,12 @@ function toggleSection(id) {
     navigate(id);
   }
 }
-navigate('home');
+// Hash routing: read URL hash once on page load only
+(function() {
+  var hash = location.hash.replace('#','').trim();
+  var el = hash ? document.getElementById('page-'+hash) : null;
+  navigate(el ? hash : 'home');
+})();
 </script>
 </body>
 </html>
