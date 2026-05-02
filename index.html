@@ -3125,11 +3125,13 @@ function toggleSection(id) {
     navigate(id);
   }
 }
-// Hash routing: read URL hash once on page load only
+// URL routing: read hash OR pathname on page load
 (function() {
   var hash = location.hash.replace('#','').trim();
-  var el = hash ? document.getElementById('page-'+hash) : null;
-  navigate(el ? hash : 'home');
+  var path = location.pathname.replace(/^\//, '').replace(/\/$/, '').trim();
+  var target = hash || path || 'home';
+  var el = document.getElementById('page-' + target);
+  navigate(el ? target : 'home');
 })();
 </script>
 </body>
